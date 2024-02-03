@@ -1,0 +1,24 @@
+query Characters{
+    characters(page: 1) {
+        info {
+            count
+            next
+            prev
+            pages
+
+        }
+        results {
+            name
+            image
+            status
+            species
+            type
+            gender
+            image
+
+            id
+            created
+        }
+    }
+
+}
