@@ -13,13 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.domain.models
+package com.peterchege.rickandmortyapp.presentation.navigation
 
-data class SimpleCharacter(
-    val id:String,
-    val name:String,
-    val image:String,
-    val status:String,
-    val type:String,
-    val gender:String,
-)
+import androidx.navigation.NavHostController
+import com.peterchege.rickandmortyapp.core.util.Screens
+
+fun NavHostController.navigateToCharacterScreen(characterId:String){
+    navigate(Screens.CHARACTER_SCREEN + "/${characterId}")
+}
+
+fun NavHostController.navigateToEpisodeScreen(episodeId:String){
+    navigate(Screens.EPISODE_SCREEN + "/${episodeId}")
+}
+
+fun NavHostController.navigateToLocationScreen(locationId:String){
+    navigate(Screens.LOCATION_SCREEN + "/${locationId}")
+}

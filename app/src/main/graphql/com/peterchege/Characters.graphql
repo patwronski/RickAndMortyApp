@@ -1,5 +1,5 @@
-query Characters{
-    characters(page: 1) {
+query Characters($page:Int){
+    characters(page: $page) {
         info {
             count
             next
@@ -8,6 +8,7 @@ query Characters{
 
         }
         results {
+            id
             name
             image
             status

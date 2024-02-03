@@ -13,13 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.domain.models
+package com.peterchege.rickandmortyapp.presentation.screens.location
 
-data class SimpleCharacter(
-    val id:String,
-    val name:String,
-    val image:String,
-    val status:String,
-    val type:String,
-    val gender:String,
-)
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
+
+
+@HiltViewModel
+class LocationScreenViewModel @Inject constructor(
+
+):ViewModel() {
+
+
+
+}

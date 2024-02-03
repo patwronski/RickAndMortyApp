@@ -13,13 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.domain.models
+package com.peterchege.rickandmortyapp.domain.paging
 
-data class SimpleCharacter(
-    val id:String,
-    val name:String,
-    val image:String,
-    val status:String,
-    val type:String,
-    val gender:String,
-)
+class AllEpisodesPagingSource {
+}

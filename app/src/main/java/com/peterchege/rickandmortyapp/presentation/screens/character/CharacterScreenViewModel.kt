@@ -13,33 +13,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.presentation.screens.characters
+package com.peterchege.rickandmortyapp.presentation.screens.character
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.Pager
-import androidx.paging.cachedIn
 import com.peterchege.rickandmortyapp.domain.models.SimpleCharacter
 import com.peterchege.rickandmortyapp.domain.repository.CharacterRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
-class AllCharacterScreenViewModel @Inject constructor(
-    private val charactersPager: Pager<Int, SimpleCharacter>
-) : ViewModel() {
+class CharacterScreenViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+    private val characterRepository: CharacterRepository,
+):ViewModel() {
+    private val characterId = savedStateHandle.getStateFlow(key = "characterId", initialValue = "")
+
+    private val _character = MutableStateFlow<SimpleCharacter?>(null)
+    val character = _character.asStateFlow()
 
 
-    val pagingCharacters = charactersPager.flow
-        .cachedIn(scope = viewModelScope)
 
+    init {
+        getCharacterById()
+    }
 
-
+    private fun getCharacterById(){
+        viewModelScope.launch {
+            _character.update {
+                characterRepository.getCharacterById(id = characterId.value)
+            }
+        }
+    }
 }

@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.domain.models
+package com.peterchege.rickandmortyapp.core.util
 
-data class SimpleCharacter(
-    val id:String,
-    val name:String,
-    val image:String,
-    val status:String,
-    val type:String,
-    val gender:String,
-)
+fun truncate(str: String?, n: Int): String {
+    return if (str != null && str.length > n) {
+        str.substring(0, n - 1) + "...."
+    } else {
+        str ?: ""
+    }
+}

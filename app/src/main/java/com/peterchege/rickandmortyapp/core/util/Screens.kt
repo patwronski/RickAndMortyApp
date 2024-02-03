@@ -13,13 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.peterchege.rickandmortyapp.domain.models
+package com.peterchege.rickandmortyapp.core.util
 
-data class SimpleCharacter(
-    val id:String,
-    val name:String,
-    val image:String,
-    val status:String,
-    val type:String,
-    val gender:String,
-)
+object Screens {
+    const val BOTTOM_BAR_NAVIGATION = "BOTTOM_BAR_NAVIGATION"
+    const val ALL_CHARACTERS_SCREEN = "ALL_CHARACTERS_SCREEN"
+    const val CHARACTER_SCREEN = "CHARACTER_SCREEN"
+
+    const val ALL_EPISODE_SCREEN = "ALL_EPISODES_SCREEN"
+    const val EPISODE_SCREEN = "EPISODE_SCREEN"
+
+    const val ALL_LOCATION_SCREEN = "ALL_LOCATION_SCREEN"
+    const val LOCATION_SCREEN = "LOCATION_SCREEN"
+
+
+}
