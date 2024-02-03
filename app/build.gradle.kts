@@ -30,9 +30,18 @@ android {
             useSupportLibrary = true
         }
     }
+    signingConfigs{
+        create("release"){
+            storeFile = file("rickandmorty.jks")
+            keyAlias = "rickandmorty"
+            keyPassword = "rickandmorty"
+            storePassword =  "rickandmorty"
+        }
+    }
 
     buildTypes {
         getByName("release") {
+            signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(
